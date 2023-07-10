@@ -1,0 +1,113 @@
+using System;
+
+// Classe abstrata para representar um personagem genérico
+public abstract class Personagem
+{
+    public abstract void Atacar();
+    public abstract void Mover();
+    public abstract void Defender();
+}
+
+// Interface para representar a habilidade de ataque de um personagem
+public interface IHabilidadeAtaque
+{
+    void Ataque();
+}
+
+// Interface para representar a habilidade de movimentação de um personagem
+public interface IHabilidadeMovimento
+{
+    void Movimentar();
+}
+
+// Interface para representar a habilidade de defesa de um personagem
+public interface IHabilidadeDefesa
+{
+    void Defender();
+}
+
+// Classe do Guerreiro que herda de Personagem e implementa as interfaces
+public class Guerreiro : Personagem, IHabilidadeAtaque, IHabilidadeMovimento, IHabilidadeDefesa
+{
+    public override void Atacar()
+    {
+        Console.WriteLine("Guerreiro: Ataque com espada!");
+        Console.WriteLine("Guerreiro: Ataque com espada novamente!");
+    }
+
+    public override void Mover()
+    {
+        Console.WriteLine("Guerreiro: Anda até dois espaços.");
+    }
+
+    public override void Defender()
+    {
+        Console.WriteLine("Guerreiro: Defende com o escudo.");
+    }
+}
+
+// Classe do Mago que herda de Personagem e implementa as interfaces
+public class Mago : Personagem, IHabilidadeAtaque, IHabilidadeMovimento, IHabilidadeDefesa
+{
+    public override void Atacar()
+    {
+        Console.WriteLine("Mago: Ataque com bolas de elementos (fogo, terra, ar, água).");
+    }
+
+    public override void Mover()
+    {
+        Console.WriteLine("Mago: Anda até três espaços correndo.");
+    }
+
+    public override void Defender()
+    {
+        Console.WriteLine("Mago: Defende com barreira de ar.");
+    }
+}
+
+// Classe do Ranger que herda de Personagem e implementa as interfaces
+public class Ranger : Personagem, IHabilidadeAtaque, IHabilidadeMovimento, IHabilidadeDefesa
+{
+    public override void Atacar()
+    {
+        Console.WriteLine("Ranger: Ataque com arco e flechas.");
+    }
+
+    public override void Mover()
+    {
+        Console.WriteLine("Ranger: Anda até cinco espaços pulando.");
+    }
+
+    public override void Defender()
+    {
+        Console.WriteLine("Ranger: Esquiva.");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Personagem guerreiro = new Guerreiro();
+        Personagem mago = new Mago();
+        Personagem ranger = new Ranger();
+
+        // Guerreiro
+        Console.WriteLine("Guerreiro:");
+        guerreiro.Mover();
+        guerreiro.Atacar();
+        guerreiro.Defender();
+
+        // Mago
+        Console.WriteLine("Mago:");
+        mago.Mover();
+        mago.Atacar();
+        mago.Defender();
+
+        // Ranger
+        Console.WriteLine("Ranger:");
+        ranger.Mover();
+        ranger.Atacar();
+        ranger.Defender();
+    }
+}
